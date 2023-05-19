@@ -1,0 +1,15 @@
+.flex{
+    display: flex;
+}
+.flex-1{
+    flex: 1 1 0;
+}
+.h-9{
+    height: 36px;
+}
+.border{
+    border: 1px solid black;
+}
+.captlized{
+    text-transform: capitalize;
+}
