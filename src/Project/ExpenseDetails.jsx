@@ -30,7 +30,10 @@ const ExpenceDetails = () => {
                 onClick={() => dispatch(deleteTranc(tranc.id))}
               />
             </div>
-            <h5>${tranc?.money}</h5>
+            <h5 className={tranc.type}>
+              ${tranc.type === "income" ? "+" : "-"}
+              {tranc?.money}
+            </h5>
           </li>
         ))}
       </ul>

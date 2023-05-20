@@ -4,6 +4,7 @@ import {
   BsFileEarmarkArrowDownFill,
 } from "react-icons/bs";
 import { useSelector } from "react-redux";
+import Transaction from "./TransactionsPage";
 
 const HomePage = () => {
   const balance = useSelector((store) => store.expenseTracker.expensedetails);
@@ -40,6 +41,10 @@ const HomePage = () => {
         </div>
         <h4>Expense</h4>
       </div>
+      <h1>Transactions</h1>
+      {balance?.map((money) => (
+        <Transaction key={money.id} datas={money} />
+      ))}
     </div>
   );
 };

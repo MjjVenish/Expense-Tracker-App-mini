@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const userDetails = {
   id: 1,
   username: "",
@@ -28,6 +29,7 @@ const reducer = (state, action) => {
 const LoginPage = () => {
   const [users, dispatch] = useReducer(reducer, userDetails);
   const [validation, setValidation] = useState({});
+  const navigate = useNavigate();
 
   const validate = (user) => {
     let isError = {};
@@ -46,6 +48,7 @@ const LoginPage = () => {
     setValidation(validate(users));
     localStorage.setItem("users", JSON.stringify(users));
     dispatch({ type: "reset", payload: userDetails });
+    navigate("/lets");
   };
 
   return (
