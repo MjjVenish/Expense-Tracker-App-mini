@@ -5,6 +5,7 @@ import AddExpense from "../AddExpense";
 import ExpenceDetails from "../ExpenseDetails";
 import ProfilePage from "../Profile";
 import FormPage from "../formPage";
+import LoginPage from "../loginPage";
 
 const AppRoutesExpense = () => {
   return (
@@ -14,6 +15,7 @@ const AppRoutesExpense = () => {
       <Route path="/addExpense" element={<AddExpense />} />
       <Route path="/details" element={<ExpenceDetails />} />
       <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/login" element={<LoginPage />} />
     </Routes>
   );
 };

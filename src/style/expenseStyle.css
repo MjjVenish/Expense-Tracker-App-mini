@@ -13,3 +13,6 @@
 .captlized{
     text-transform: capitalize;
 }
+span{
+    color: red;
+}

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialState = { expensedetails: [] };
+const data = JSON.parse(localStorage.getItem("trancDetails"));
+const initialState = { expensedetails: data };
 
 const expenseSlice = createSlice({
   name: "expenseSlice",

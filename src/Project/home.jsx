@@ -8,23 +8,21 @@ import { useSelector } from "react-redux";
 const HomePage = () => {
   const balance = useSelector((store) => store.expenseTracker.expensedetails);
   const [cash, setCash] = useState({ income: 0, expense: 0, total: 0 });
-  console.log(balance);
+
   useEffect(() => {
     const income = balance
       ?.filter((bal) => bal.type === "income")
       ?.map((tran) => Number(tran.money))
       ?.reduce((cur, acc) => cur + acc);
-    setCash({ ...cash, income });
 
     const expense = balance
       ?.filter((bal) => bal.type === "expense")
       ?.map((tran) => Number(tran.money))
       ?.reduce((cur, acc) => cur + acc);
-    setCash({ ...cash, expense });
 
     const total = income - expense;
-    setCash({ ...cash, total });
-  }, []);
+    setCash({ total, income, expense });
+  }, [balance]);
   return (
     <div>
       <div>
