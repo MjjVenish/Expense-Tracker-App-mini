@@ -8,6 +8,7 @@ import FormPage from "../formPage";
 import LoginPage from "../loginPage";
 import LetsStartPage from "../Let'sStartPage";
 import Overview from "../OverviewPage";
+import SettingPage from "../SettingPage";
 
 const AppRoutesExpense = () => {
   return (
@@ -20,6 +21,7 @@ const AppRoutesExpense = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/lets" element={<LetsStartPage />} />
       <Route path="/overview" element={<Overview />} />
+      <Route path="/profile/setting" element={<SettingPage />} />
     </Routes>
   );
 };

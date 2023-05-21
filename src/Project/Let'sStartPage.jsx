@@ -5,12 +5,16 @@ const LetsStartPage = () => {
   const navigate = useNavigate();
   const names = JSON.parse(localStorage.getItem("users"));
   return (
-    <div>
-      <div>
-        <h1 className="captlized">Hi {names?.username}</h1>
+    <div className="grid just-algin bg-parent h-full">
+      <div className="mt-2">
+        <h1 className="captlized text-alin">Hi {names?.username}</h1>
       </div>
-      <div>
-        <img src="https://openclipart.org/image/800px/306469" alt="" />
+      <div className=" bg-gray text-alin rounded p-2 ">
+        <img
+          src="https://openclipart.org/image/800px/306469"
+          alt=""
+          className="w-h-200px"
+        />
       </div>
       <div>
         <h1>Save your money with Expense Tracker</h1>
@@ -19,8 +23,13 @@ const LetsStartPage = () => {
           work for money
         </p>
       </div>
-      <div>
-        <button onClick={() => navigate("/addExpense")}>Let's Start</button>
+      <div className="text-alin mt-2">
+        <button
+          onClick={() => navigate("/addExpense")}
+          className="px py rounded-2 bg-but border-none"
+        >
+          Let's Start
+        </button>
       </div>
     </div>
   );

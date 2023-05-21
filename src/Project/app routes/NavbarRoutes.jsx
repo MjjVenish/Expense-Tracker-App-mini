@@ -6,7 +6,7 @@ import {
   FcViewDetails,
   FcNegativeDynamic,
 } from "react-icons/fc";
-
+import { RiLoginBoxFill } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 import "../../style/expenseStyle.css";
 
@@ -26,7 +26,7 @@ const NavbarExpense = () => {
         <FaUserTie />
       </NavLink>
       <NavLink to="/login" className="flex-1">
-        login
+        <RiLoginBoxFill />
       </NavLink>
       <NavLink to="/overview" className="flex-1">
         <FcNegativeDynamic />

@@ -64,4 +64,54 @@ span{
 .bg-expense{
     background:linear-gradient(rgb(113, 59, 133),red) ;
 }
+.grid{
+    display: grid;
+}
+.just-algin{
+    justify-content: center;
+}
+.w-h-200px{
+    width: 350px;
+    height: 400px;
+}
+.w-h{
+    width: 450px;
+    height: 500px;
+}
+.just{
+    justify-content: center;
+}
+.text-alin{
+  text-align: center
+}
+.rounded{
+    border-radius: 50%;
+}
+.p-2{
+    padding: 10px;
+}
+.bg-gray{
+    background-color: #969687;
+}
+.bg-parent{
+    background-color: #ba45e7;
+}
+.h-full{
+    height: 95vh;
+}
+.bg-but{
+    background-color: #fa0bde;
+    color: white;
+    font-size: larger;
+}
+.py{
+    padding: 15px ;
+}
+.px {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.rounded-2{
+    border-radius: 10px;
+}
 
