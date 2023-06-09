@@ -4,17 +4,16 @@ import "./index.css";
 // import App from './App';
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import AppRoutesExpense from "./Project/app routes/Routes";
-import NavbarExpense from "./Project/app routes/NavbarRoutes";
 import { Provider } from "react-redux";
+import AppRoutes from "./Routes/AppRoutes";
 import store from "./app/store";
+import "../src/style/expenseStyle.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-      <NavbarExpense />
-      <AppRoutesExpense />
+      <AppRoutes />
     </BrowserRouter>
   </Provider>
 );

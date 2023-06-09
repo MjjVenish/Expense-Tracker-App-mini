@@ -1,0 +1,108 @@
+{
+  "usersRegister": [
+    {
+      "username": "venish",
+      "email": "venishmjj1018@gmail.com",
+      "password": "10049918",
+      "repassword": "10049918",
+      "gender": "male",
+      "id": 1
+    },
+    {
+      "username": "saro op",
+      "email": "saravanan@gmail.com",
+      "password": "8754sava",
+      "repassword": "8754sava",
+      "gender": "male",
+      "id": 2
+    },
+    {
+      "username": "Gokul Kutty",
+      "email": "gokul07@gmail.com",
+      "password": "07070707",
+      "repassword": "07070707",
+      "gender": "male",
+      "id": 3
+    }
+  ],
+  "loginUsers": [
+    {
+      "username": "venish",
+      "email": "venishmjj1018@gmail.com",
+      "password": "10049918",
+      "id": 1
+    }
+  ],
+  "usersExpense": [
+    {
+      "id": "c2849013-bdb8-d778-5468-653ccb591871",
+      "category": "sallery",
+      "money": "12000",
+      "date": "2023-06-05",
+      "trancation": "UPI",
+      "type": "income",
+      "user": {
+        "username": "saro op",
+        "email": "saravanan@gmail.com",
+        "password": "8754sava",
+        "id": 1
+      }
+    },
+    {
+      "id": "5e892d69-f934-386e-4ac0-1ec1fa8c1d03",
+      "category": "market",
+      "money": "1000",
+      "date": "2023-06-06",
+      "trancation": "Cash",
+      "type": "expense",
+      "user": {
+        "username": "venish",
+        "email": "venishmjj1018@gmail.com",
+        "password": "10049918",
+        "id": 1
+      }
+    },
+    {
+      "id": "9b530f65-e44c-9ffa-8eea-adc14d712d11",
+      "category": "sallery bonus",
+      "money": "12000",
+      "date": "2023-06-01",
+      "trancation": "UPI",
+      "type": "income",
+      "user": {
+        "username": "venish",
+        "email": "venishmjj1018@gmail.com",
+        "password": "10049918",
+        "id": 1
+      }
+    },
+    {
+      "id": "04731d94-3846-05fb-d159-dca43fecfa99",
+      "category": "sallery bonus",
+      "money": "100",
+      "date": "2023-06-12",
+      "trancation": "UPI",
+      "type": "income",
+      "user": {
+        "username": "saro op",
+        "email": "saravanan@gmail.com",
+        "password": "8754sava",
+        "id": 1
+      }
+    },
+    {
+      "id": "72143374-db63-7ed7-a2ce-10d26298ea08",
+      "category": "sallery",
+      "money": "10000",
+      "date": "2023-06-12",
+      "trancation": "UPI",
+      "type": "income",
+      "user": {
+        "username": "Gokul Kutty",
+        "email": "gokul07@gmail.com",
+        "password": "07070707",
+        "id": 1
+      }
+    }
+  ]
+}

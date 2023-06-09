@@ -5,7 +5,7 @@
     flex: 1 1 0;
 }
 .h-9{
-    height: 36px;
+    height: 46px;
 }
 .border{
     border: 1px solid black;
@@ -13,7 +13,7 @@
 .captlized{
     text-transform: capitalize;
 }
-span{
+.error{
     color: red;
 }
 .income{
@@ -49,11 +49,22 @@ span{
 .font-thin{
     font-size: 40px;
 }
+.font-big{
+font-size: 160px;
+text-align: center;
+}
+.font-light{
+    font-size: 30px;
+}
 .box-shade{
     box-shadow: 20px 20px 20px rgb(21, 20, 20);
 }
 .mt-2{
     margin-top: 30px;
+}
+.m-input{
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 .border-none{
     border: none;
@@ -78,8 +89,14 @@ span{
     width: 450px;
     height: 500px;
 }
+.w-80{
+    width: 80%;
+}
 .just{
     justify-content: center;
+}
+.item-center{
+    align-items: center;
 }
 .text-alin{
   text-align: center
@@ -87,8 +104,19 @@ span{
 .rounded{
     border-radius: 50%;
 }
+.rounded-input{
+    border-radius: 60px;
+    outline: none;
+}
 .p-2{
     padding: 10px;
+}
+.p-3{
+padding: 15px;
+}
+.pl-input{
+    padding-left: 50px;
+    font-size: medium;
 }
 .bg-gray{
     background-color: #969687;
@@ -97,7 +125,7 @@ span{
     background-color: #ba45e7;
 }
 .h-full{
-    height: 95vh;
+    height: 94vh;
 }
 .bg-but{
     background-color: #fa0bde;
@@ -105,7 +133,7 @@ span{
     font-size: larger;
 }
 .py{
-    padding: 15px ;
+padding: 15px;
 }
 .px {
     padding-left: 40px;
@@ -114,4 +142,52 @@ span{
 .rounded-2{
     border-radius: 10px;
 }
-
+.active{
+   background-color:#edf5e1;
+   border-radius: 18px;
+}
+.h-100{
+    height: 100%;
+}
+.bg-nav{
+    color: #05386b;
+    background-color: #379683;
+}
+.px-nav{
+    padding-left: 80px;
+    padding-right: 80px;
+}
+.w-img,.h-img{
+   width: 35px;
+   height: 35px;
+}
+.absolute{
+    position: absolute;
+}
+.relative{
+    position: relative;
+}
+.icons-pos{
+    left: 65px;
+    top: 32px;
+}
+.text-de{
+    text-decoration: none;
+}
+.mr-3{
+    margin-right: 110px;
+}
+.login-but{
+    margin-top: 10px;
+    padding:10px 60px;
+    border-radius: 30px;
+    background-color: #05386b;
+    color:#fff;
+    font-size: large;
+}
+.border-red{
+     border-color: #ff0000;
+}
+.h-fit{
+    height: 100vh;
+}
