@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import uuid from "react-uuid";
-import { useDispatch, useSelector } from "react-redux";
-import { postThunkData } from "../Featuers/ExpenseTrackerApp/Expenseslice";
+import { useDispatch } from "react-redux";
+import {
+  postThunkData,
+  editThunkData,
+} from "../Featuers/ExpenseTrackerApp/Expenseslice";
 import { getUsers } from "../lib/axios/getdetails";
 
 const initial = {
@@ -18,25 +21,31 @@ const FormPage = () => {
   const { category } = useParams();
   const [amount, setAmount] = useState(initial);
   const [users, setUsers] = useState(null);
+  const [transcation, setTranscation] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
     getUsers().then(({ data }) => data.map((val) => setUsers(val)));
   }, []);
+
+  useEffect(() => {
+    if (transcation) setAmount(transcation);
+  }, [transcation]);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
-      amount.category.length &&
-      amount.date.length &&
+      amount.category.length > 0 &&
+      amount.date.length > 0 &&
       amount.trancation.length > 0
     ) {
-      dispatch(postThunkData({ ...amount, user: users }));
+      if (amount.user) dispatch(editThunkData({ ...amount }));
+      else dispatch(postThunkData({ ...amount, user: users }));
       navigate("/details");
       setAmount(initial);
     }
   };
   return (
-    <div className="h-full">
+    <div className="h-fit">
       <>
         <h1 className="captlized">{category}</h1>
         <form action="" onSubmit={handleSubmit}>
@@ -51,6 +60,7 @@ const FormPage = () => {
             <input
               type="text"
               id="expenses"
+              value={amount?.category}
               onChange={(e) =>
                 setAmount({ ...amount, id: uuid(), category: e.target.value })
               }
@@ -61,7 +71,7 @@ const FormPage = () => {
             <input
               type="number"
               id="money"
-              value={amount.money}
+              value={amount?.money}
               onChange={(e) =>
                 setAmount({
                   ...amount,

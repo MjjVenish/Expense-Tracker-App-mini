@@ -1,19 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import Transaction from "../components/Transactions";
 import { FaFileInvoiceDollar } from "../Icons/icons";
-import { userThunk } from "../Featuers/ExpenseTrackerApp/Expenseslice";
 
 const users = JSON.parse(localStorage.getItem("users"));
 
 const AddExpense = () => {
   const navigate = useNavigate();
   const lastAdd = useSelector((store) => store.expenseTracker.expensedetails);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(userThunk());
-  }, []);
+
   return (
     <div className="h-full">
       {users ? (

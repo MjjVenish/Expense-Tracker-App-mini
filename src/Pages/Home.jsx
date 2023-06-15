@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Transaction from "../components/Transactions";
+import { getUsers } from "../lib/axios/getdetails";
 import { userThunk } from "../Featuers/ExpenseTrackerApp/Expenseslice";
+import Transaction from "../components/Transactions";
 import {
   BsFileEarmarkArrowDownFill,
   BsFileEarmarkArrowUpFill,
@@ -11,6 +12,7 @@ const HomePage = () => {
   const balance = useSelector((store) => store.expenseTracker.expensedetails);
   const [cash, setCash] = useState({ income: 0, expense: 0, total: 0 });
   const dispatch = useDispatch();
+  const [users, setUsers] = useState(null);
 
   useEffect(() => {
     const income = balance
@@ -27,8 +29,11 @@ const HomePage = () => {
     setCash({ total, income, expense });
   }, [balance]);
   useEffect(() => {
-    dispatch(userThunk());
+    getUsers().then(({ data }) => data.map((user) => setUsers(user)));
   }, []);
+  useEffect(() => {
+    if (users) dispatch(userThunk(users));
+  }, [users]);
   return (
     <div className="h-full">
       <div>

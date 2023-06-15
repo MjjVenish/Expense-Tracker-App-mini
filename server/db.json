@@ -63,9 +63,65 @@
       }
     },
     {
-      "id": "9b530f65-e44c-9ffa-8eea-adc14d712d11",
+      "id": "72143374-db63-7ed7-a2ce-10d26298ea08",
+      "category": "sallery",
+      "money": "10000",
+      "date": "2023-06-12",
+      "trancation": "UPI",
+      "type": "income",
+      "user": {
+        "username": "Gokul Kutty",
+        "email": "gokul07@gmail.com",
+        "password": "07070707",
+        "id": 1
+      }
+    },
+    {
+      "id": "6ef3366e-80e9-507d-2a5f-af0abd6be488",
+      "category": "sallery",
+      "money": "100000",
+      "date": "2023-06-04",
+      "trancation": "UPI",
+      "type": "income",
+      "user": {
+        "username": "venish",
+        "email": "venishmjj1018@gmail.com",
+        "password": "10049918",
+        "id": 1
+      }
+    },
+    {
+      "id": "be2845cb-37a2-d0cc-fdab-09269b705d96",
       "category": "sallery bonus",
-      "money": "12000",
+      "money": "1000",
+      "date": "2023-06-01",
+      "trancation": "Cash",
+      "type": "income",
+      "user": {
+        "username": "venish",
+        "email": "venishmjj1018@gmail.com",
+        "password": "10049918",
+        "id": 1
+      }
+    },
+    {
+      "id": "2ceb2eca-12e9-2fa9-149d-5afd91f6a963",
+      "category": "Room Rent",
+      "money": "1500",
+      "date": "2023-06-07",
+      "trancation": "Others",
+      "type": "income",
+      "user": {
+        "username": "venish",
+        "email": "venishmjj1018@gmail.com",
+        "password": "10049918",
+        "id": 1
+      }
+    },
+    {
+      "id": "ec87d582-79c9-7120-d434-cdbee771ba7c",
+      "category": "home",
+      "money": "1200",
       "date": "2023-06-01",
       "trancation": "UPI",
       "type": "income",
@@ -77,26 +133,40 @@
       }
     },
     {
-      "id": "04731d94-3846-05fb-d159-dca43fecfa99",
+      "id": "a5a28852-2c72-3104-ca5d-0524d4c400b9",
       "category": "sallery bonus",
-      "money": "100",
-      "date": "2023-06-12",
-      "trancation": "UPI",
+      "money": "10080",
+      "date": "2023-06-03",
+      "trancation": "Cash",
       "type": "income",
       "user": {
-        "username": "saro op",
-        "email": "saravanan@gmail.com",
-        "password": "8754sava",
+        "username": "Gokul Kutty",
+        "email": "gokul07@gmail.com",
+        "password": "07070707",
         "id": 1
       }
     },
     {
-      "id": "72143374-db63-7ed7-a2ce-10d26298ea08",
-      "category": "sallery",
-      "money": "10000",
-      "date": "2023-06-12",
-      "trancation": "UPI",
-      "type": "income",
+      "id": "cf9aa0b2-b3bd-f13d-05a8-1d2984a0840f",
+      "category": "travel",
+      "money": "1300",
+      "date": "2023-06-07",
+      "trancation": "Cash",
+      "type": "expense",
+      "user": {
+        "username": "Gokul Kutty",
+        "email": "gokul07@gmail.com",
+        "password": "07070707",
+        "id": 1
+      }
+    },
+    {
+      "id": "7f2decd9-d7b2-eb3d-e0c8-22f506ca7bee",
+      "category": "Room Rent",
+      "money": "1200",
+      "date": "2023-06-10",
+      "trancation": "Cash",
+      "type": "expense",
       "user": {
         "username": "Gokul Kutty",
         "email": "gokul07@gmail.com",

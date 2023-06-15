@@ -1,27 +1,33 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
-  editTranc,
   deleteThunkData,
   userThunk,
 } from "../Featuers/ExpenseTrackerApp/Expenseslice";
 import { Navigate, useNavigate } from "react-router-dom";
+import { getUsers } from "../lib/axios/getdetails";
 import { FcDeleteDatabase, FcEditImage } from "../Icons/icons";
+import useTracker from "../hooks/CustomHook";
 
 const users = JSON.parse(localStorage.getItem("users"));
 
 const ExpenceDetails = () => {
+  const { editTrancation } = useTracker();
   const transactions = useSelector(
     (store) => store.expenseTracker.expensedetails
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [usersdata, setUsersdata] = useState(null);
   useEffect(() => {
-    dispatch(userThunk());
+    getUsers().then(({ data }) => data.map((user) => setUsersdata(user)));
   }, []);
+  useEffect(() => {
+    if (usersdata) dispatch(userThunk(usersdata));
+  }, [usersdata]);
 
   const handleEdit = (tranc) => {
-    dispatch(editTranc(tranc));
+    editTrancation(tranc);
     navigate(`/addExpense/${tranc.type}`);
   };
   return (
@@ -40,7 +46,7 @@ const ExpenceDetails = () => {
                   <FcDeleteDatabase
                     onClick={() => {
                       dispatch(deleteThunkData(tranc.id));
-                      dispatch(userThunk());
+                      dispatch(userThunk(usersdata));
                     }}
                   />
                 </div>

@@ -3,6 +3,7 @@ export {
   FaUsers,
   FaFileInvoiceDollar,
   FaUser,
+  FaArrowAltCircleLeft,
 } from "react-icons/fa";
 export {
   FcAddImage,

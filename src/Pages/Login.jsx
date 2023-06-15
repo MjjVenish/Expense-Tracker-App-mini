@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { FaUsers, MdEmail, FaUser, FcLock } from "../Icons/icons";
+import {
+  FaUsers,
+  MdEmail,
+  FaUser,
+  FcLock,
+  FaArrowAltCircleLeft,
+} from "../Icons/icons";
 import FormError from "../components/FormError";
 import {
   getRsgisterUsers,
@@ -9,6 +16,7 @@ import {
   editUsers,
   postUsers,
 } from "../lib/axios/getdetails";
+import { userThunk } from "../Featuers/ExpenseTrackerApp/Expenseslice";
 
 const intialValues = {
   username: "",
@@ -20,12 +28,12 @@ const intialValues = {
 const LoginPage = () => {
   const [userData, setUserData] = useState([]);
   const [loginUser, setLoginUser] = useState(null);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
     getRsgisterUsers().then(({ data }) => setUserData(data));
     getUsers().then(({ data }) => data.map((val) => setLoginUser(val)));
   }, []);
-  console.log(loginUser);
 
   const validate = (values) => {
     let errors = {};
@@ -50,7 +58,6 @@ const LoginPage = () => {
         users.password === values.password
       ) {
         if (loginUser?.email) {
-          console.log("work");
           navigate("/lets");
           editUsers({
             ...values,
@@ -66,6 +73,7 @@ const LoginPage = () => {
           localStorage.setItem("users", JSON.stringify(values));
           props.resetForm();
         }
+        dispatch(userThunk(values));
       } else navigate("/register");
     };
     checkUsers(values);
@@ -126,6 +134,10 @@ const LoginPage = () => {
                 disabled={!formik.isValid}
               />
             </Form>
+            <FaArrowAltCircleLeft
+              className="absolute font-icon"
+              onClick={() => navigate("/addExpense")}
+            />
           </div>
         );
       }}

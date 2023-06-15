@@ -6,10 +6,11 @@ const initialState = {
   isLoading: false,
   isError: false,
 };
-console.log(initialState);
-const fetcher = async () => {
-  const res = await server.get("/usersExpense");
-  return await res.data;
+
+const fetcher = async (url) => {
+  const res = await server.get(`/usersExpense`);
+  const data = await res.data;
+  return data.filter((details) => details.user.email === url.email);
 };
 const deleteExpense = async (id) => await server.delete(`/usersExpense/${id}`);
 
@@ -26,23 +27,11 @@ export const editThunkData = createAsyncThunk("editExpense", editExpense);
 const expenseSlice = createSlice({
   name: "expenseSlice",
   initialState,
-  reducers: {
-    editTranc: (state, action) => {
-      state.expensedetails.map((expense) =>
-        expense.id === action.payload.id ? console.log(action.payload) : expense
-      );
-    },
-    userDetails: (state, action) => {
-      state.users = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(userThunk.fulfilled, (state, action) => {
-        const users = JSON.parse(localStorage.getItem("users"));
-        state.expensedetails = action.payload
-          .reverse()
-          .filter((load) => load.user.email === users.email);
+        state.expensedetails = action.payload.reverse();
         state.isLoading = false;
         state.isError = false;
       })
@@ -59,4 +48,3 @@ const expenseSlice = createSlice({
   },
 });
 export default expenseSlice.reducer;
-export const { editTranc, userDetails } = expenseSlice.actions;
