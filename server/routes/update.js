@@ -3,6 +3,6 @@ const { updateNameAndEmail, updatePassword } = require("../handler/userUpdate");
 
 router.put("/updateUser/:id", updateNameAndEmail);
 
-router.put("/updatePassword/:id", updatePassword);
+router.put("/updatePassword", updatePassword);
 
 module.exports = router;

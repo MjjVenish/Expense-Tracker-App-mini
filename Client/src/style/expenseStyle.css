@@ -199,3 +199,8 @@ padding: 15px;
    top: 20px;
    left: 20px;
 }
+.profile-img{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+}

@@ -29,14 +29,21 @@ const hashPassword = async (password) => {
 
 const updatePassword = async (req, res) => {
   try {
-    const { password } = req.body;
-    const { id } = req.params;
-    const hashedPassword = await hashPassword(password);
-    await dp.none(`UPDATE users_table SET password=$1 WHERE id=$2`, [
-      hashedPassword,
-      id,
-    ]);
-    return res.status(201).json({ message: "Password Update SucessFully" });
+    const { password, user_name } = req.body;
+    const getUser = await dp.manyOrNone(
+      `SELECT email FROM users_table WHERE user_name=$1`,
+      [user_name]
+    );
+    if (getUser[0]) {
+      const hashedPassword = await hashPassword(password);
+      await dp.none(`UPDATE users_table SET password=$1 WHERE user_name=$2`, [
+        hashedPassword,
+        user_name,
+      ]);
+      return res.status(201).json({ message: "Password Update SucessFully" });
+    } else {
+      return res.status(401).json({ message: "User does not Exits" });
+    }
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

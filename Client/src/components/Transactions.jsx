@@ -12,7 +12,7 @@ const Transaction = ({ datas }) => {
           ₹{datas.type === "income" ? "+" : "-"}
           {datas.money}
         </h2>
-        <h3>{datas.time_only}</h3>
+        <h3>{datas?.time_only}</h3>
       </div>
     </div>
   );

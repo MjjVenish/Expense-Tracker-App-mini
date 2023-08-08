@@ -13,6 +13,7 @@ export {
   FcEditImage,
   FcDeleteDatabase,
   FcLock,
+  FcCamera,
 } from "react-icons/fc";
 export {
   BsFileEarmarkArrowUpFill,
@@ -25,4 +26,4 @@ export {
   RiLogoutBoxRLine,
   RiLoginBoxFill,
 } from "react-icons/ri";
-export { MdEmail } from "react-icons/md";
+export { MdEmail, MdDelete } from "react-icons/md";

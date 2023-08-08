@@ -5,20 +5,34 @@ import {
   FcPrivacy,
   FcSettings,
   RiLogoutBoxRLine,
+  FcCamera,
+  MdDelete,
 } from "../Icons/icons";
 import { useTracker } from "../utils/hooks/userContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DeleteOption from "../components/DeleteOption";
+import { getProfile, removeProfile } from "../lib/axios/getdetails";
 
 const userToken = localStorage.getItem("token");
 
 const ProfilePage = () => {
   const navigate = useNavigate();
   const { users } = useTracker();
+  const [profile, setProfile] = useState(null);
   const [options, setOptions] = useState({
     choice: false,
     message: "Are You Sure Logout From This WepSite",
   });
+
+  useEffect(() => {
+    getProfile(users?.id)
+      .then((result) => {
+        const { userProfile } = result.data;
+        setProfile(userProfile?.image);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   const handleOption = (value) => {
     if (value) {
       localStorage.removeItem("token");
@@ -29,14 +43,32 @@ const ProfilePage = () => {
     }
   };
 
+  const profileDelete = () => {
+    const value = { data: "" };
+    removeProfile(users.id, value)
+      .then((res) => {
+        setProfile(res.data.userProfile);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="h-full">
       {userToken ? (
         <>
           <div>
             <div className="">
-              {users?.loginName?.slice(0, 1)?.toUpperCase()}
+              {profile ? (
+                <img
+                  src={`http://localhost:3007/image${profile}`}
+                  className="profile-img"
+                />
+              ) : (
+                users?.loginName?.slice(0, 1)?.toUpperCase()
+              )}
             </div>
+            <FcCamera onClick={() => navigate("/profile/upload")} />
+            <MdDelete onClick={profileDelete} />
             <h2 className="captlized">{users?.username}</h2>
             <p>{users?.email}</p>
           </div>

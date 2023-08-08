@@ -103,8 +103,8 @@ const Overview = () => {
               placeholder="search....."
             />
           </div>
-          {isData?.map((type) => (
-            <Transaction datas={type} key={type.id} />
+          {isData?.map((type, index) => (
+            <Transaction datas={type} key={index} />
           ))}
         </>
       ) : (

@@ -116,6 +116,9 @@ const LoginPage = () => {
                 className="login-but border-none"
                 disabled={!formik.isValid}
               />
+              <div>
+                <Link to={"/register"}>Account Create</Link>
+              </div>
             </Form>
             <FaArrowAltCircleLeft
               className="absolute font-icon"

@@ -8,13 +8,13 @@ const DeleteOption = ({ options, handleOption }) => {
             className="login-but border-none"
             onClick={() => handleOption(false)}
           >
-            No
+            Cancel
           </button>
           <button
             className="login-but border-none"
             onClick={() => handleOption(true)}
           >
-            Yes
+            Delete
           </button>
         </div>
       </div>

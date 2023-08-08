@@ -2,8 +2,8 @@ import server from "./server";
 
 export const editUsers = async (body, id) =>
   await server.put(`/updateUser/${id}`, body);
-export const editPassword = async (body, id) =>
-  await server.put(`/updatePassword/${id}`, body);
+export const editPassword = async (body) =>
+  await server.put(`/updatePassword`, body);
 
 export const postUsers = async (values) => await server.post("/login", values);
 
@@ -38,3 +38,8 @@ export const overViewData = async (requestData) => {
 
 export const searchItem = async (query) =>
   await server.get(`/searchData?${query}`);
+
+export const getProfile = async (id) => await server.get(`/getProfile/${id}`);
+
+export const removeProfile = async (id, body) =>
+  await server.put(`/removeProfile/${id}`, body);

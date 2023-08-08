@@ -60,8 +60,11 @@ const userLogin = async (req, res) => {
     } else {
       const user = { user: email };
       const userToken = jwt.sign(user, process.env.JWT_TOKEN);
-      console.log(userToken);
-      res.cookie("token", userToken);
+      res.cookie("token", userToken, (err, value) => {
+        if (err) {
+          console.log(err);
+        }
+      });
       return res
         .status(200)
         .json({ message: "User Login SucessFully", token: userToken });
@@ -73,7 +76,6 @@ const userLogin = async (req, res) => {
 
 const getUser = async (req, res) => {
   try {
-    console.log(req.user);
     const { user } = req.user;
     const getData = await dp.manyOrNone(
       `SELECT user_name,id FROM users_table WHERE email=$1`,

@@ -10,7 +10,6 @@ const authencateToken = (req, res, next) => {
     if (err) {
       return res.sendStatus(403);
     }
-    console.log("verify", user);
     req.user = user;
     next();
   });
