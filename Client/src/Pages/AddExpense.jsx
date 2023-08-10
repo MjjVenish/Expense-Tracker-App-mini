@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import Transaction from "../components/Transactions";
 import { FaFileInvoiceDollar } from "../Icons/icons";
-import { useTracker } from "../utils/hooks/userContext";
 import { useEffect } from "react";
 import { userThunk } from "../Featuers/ExpenseTrackerApp/Expenseslice";
 
@@ -10,15 +9,15 @@ const userToken = localStorage.getItem("token");
 
 const AddExpense = () => {
   const navigate = useNavigate();
-  const { expenseData } = useSelector(
+  const expenseData = useSelector(
     (store) => store.expenseTracker.expensedetails
   );
-  
-  const { users } = useTracker();
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(userThunk(users?.loginName));
-  }, [users]);
+    dispatch(userThunk());
+  }, []);
+
   return (
     <div className="h-full">
       {userToken ? (

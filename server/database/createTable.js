@@ -12,12 +12,13 @@ const usersTable = `CREATE TABLE "users_table"(
 
 const expenseTable = `CREATE TABLE "expense_table"(
     id VARCHAR(400) NOT NULL UNIQUE,
+    user_id SERIAL NOT NULL REFERENCES users_table(id),
     expense VARCHAR(200) NOT NULL,
     money VARCHAR(50) NOT NULL,
     trancation VARCHAR(100) NOT NULL,
     date VARCHAR(100) NOT NULL,
     type VARCHAR(50) NOT NULL,
-    user_name VARCHAR(100) NOT NULL,
+    addTime VARCHAR(100) NOT NULL,
     time TIMESTAMP NOT NULL DEFAULT NOW());`;
 
 const createTable = async () => {

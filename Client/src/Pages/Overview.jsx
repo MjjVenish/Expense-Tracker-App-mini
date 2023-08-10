@@ -6,24 +6,24 @@ import {
   BsFileEarmarkArrowDownFill,
   BsFileEarmarkArrowUpFill,
 } from "../Icons/icons";
-import { useTracker } from "../utils/hooks/userContext";
 import { overViewData, searchItem } from "../lib/axios/getdetails";
 
 const userToken = localStorage.getItem("token");
 
 const Overview = () => {
-  const { expenseData } = useSelector(
+  const expenseData = useSelector(
     (store) => store.expenseTracker.expensedetails
   );
+  const users = useSelector((store) => store.expenseTracker.user);
+
   const [balance, setBalnce] = useState({ income: 0, expense: 0 });
-  const { users } = useTracker();
   const [isData, setIsData] = useState([]);
   const [search, setSearch] = useState({ data: "", data: "" });
 
   const handleChange = (e) => {
     const requsetData = {
       option: "date",
-      user_name: users.loginName,
+      user_id: users.id,
       value: e.target.value,
     };
     setSearch({ ...search, date: e.target.value });
@@ -31,7 +31,7 @@ const Overview = () => {
   };
 
   const handleSearch = (e) => {
-    const reqData = { data: e.target.value, user_name: users.loginName };
+    const reqData = { data: e.target.value, user_id: users.id };
     const quaryString = new URLSearchParams(reqData).toString();
     searchItem(quaryString).then((result) => {
       const { items } = result.data;
@@ -41,7 +41,7 @@ const Overview = () => {
   };
 
   const filterButton = (type, value) => {
-    const requsetData = { option: type, user_name: users.loginName, value };
+    const requsetData = { option: type, user_id: users.id, value };
     overViewData(requsetData).then((res) => setIsData(res.datas));
   };
   useEffect(() => {

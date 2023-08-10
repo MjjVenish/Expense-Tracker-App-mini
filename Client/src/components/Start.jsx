@@ -23,7 +23,6 @@ const LetsStartPage = () => {
         <button
           onClick={() => {
             navigate("/addExpense");
-            window.location.reload();
           }}
           className="px py rounded-2 bg-but border-none"
         >

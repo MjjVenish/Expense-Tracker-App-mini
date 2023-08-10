@@ -13,15 +13,6 @@ export const postRsgisterUsers = async (users) =>
 export const postExpense = async (expense) =>
   await server.post("/addExpense", expense);
 
-export const getUser = async () => {
-  const token = localStorage.getItem("token");
-  const res = await fetch("http://localhost:3007/getUser", {
-    method: "GET",
-    headers: { token },
-  });
-  return await res.json();
-};
-
 export const updateExpense = async (body, id) =>
   await server.put(`/updateExpense/${id}`, body);
 
@@ -43,3 +34,6 @@ export const getProfile = async (id) => await server.get(`/getProfile/${id}`);
 
 export const removeProfile = async (id, body) =>
   await server.put(`/removeProfile/${id}`, body);
+
+export const getSingle = async (id) =>
+  await server.get(`/singleTranscation/${id}`);

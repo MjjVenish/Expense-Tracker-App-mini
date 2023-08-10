@@ -12,6 +12,7 @@ const updateUser = require("./routes/update");
 const expenses = require("./routes/expense");
 const filterRouter = require("./routes/filter");
 const uploadRouter = require("./routes/upload");
+const singleRouter = require("./routes/singlePage");
 
 PORT = process.env.PORT || 3007;
 
@@ -29,6 +30,7 @@ app.use(updateUser);
 app.use(expenses);
 app.use(filterRouter);
 app.use(uploadRouter);
+app.use(singleRouter);
 
 app.listen(PORT, () => {
   console.log(`Server was Running${PORT} ....`);

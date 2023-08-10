@@ -10,20 +10,21 @@ import DeleteOption from "../components/DeleteOption";
 const userToken = localStorage.getItem("token");
 
 const ExpenceDetails = () => {
-  const { expenseData } = useSelector(
+  const expenseData = useSelector(
     (store) => store.expenseTracker.expensedetails
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { users, editExpense } = useTracker();
+  const { editExpense } = useTracker();
   const [options, setOptions] = useState({
     message: "Are You Sure Delete This Transcation",
     choice: false,
     id: "",
+    use: "Delete",
   });
 
   useEffect(() => {
-    dispatch(userThunk(users?.loginName));
+    dispatch(userThunk());
   }, []);
 
   const handleEdit = (tranc) => {
@@ -34,7 +35,7 @@ const ExpenceDetails = () => {
   const handleOption = async (value) => {
     if (value) {
       await deleteExpense(options.id).then((result) => {
-        dispatch(userThunk(users?.loginName));
+        dispatch(userThunk());
       });
       setOptions({ ...options, id: "", choice: false });
     } else setOptions({ ...options, id: "", choice: false });

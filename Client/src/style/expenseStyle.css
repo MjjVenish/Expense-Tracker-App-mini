@@ -199,8 +199,21 @@ padding: 15px;
    top: 20px;
    left: 20px;
 }
+.img-icon{
+    width: 40px;
+    height: 40px;
+}
 .profile-img{
     width: 10rem;
     height: 10rem;
     border-radius: 50%;
+}
+.hover_effect{
+    cursor: pointer;
+}
+.hover-income:hover {
+   background-color: #07f42a;
+}
+.hover-expense:hover {
+    background-color: #c93615;
 }

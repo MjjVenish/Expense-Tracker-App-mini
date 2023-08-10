@@ -24,7 +24,6 @@ const LoginPage = () => {
   const [response, setResponse] = useState({ msg: "" });
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { login } = useTracker();
 
   const validate = (values) => {
     let errors = {};
@@ -47,7 +46,6 @@ const LoginPage = () => {
         const { message, token } = res.data;
         localStorage.setItem("token", token);
         setResponse({ msg: message });
-        login(message);
         setTimeout(() => {
           navigate("/lets");
         }, 2000);

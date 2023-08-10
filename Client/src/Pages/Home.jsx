@@ -6,17 +6,16 @@ import {
   BsFileEarmarkArrowUpFill,
 } from "../Icons/icons";
 import { userThunk } from "../Featuers/ExpenseTrackerApp/Expenseslice";
-import { useTracker } from "../utils/hooks/userContext";
 
 const HomePage = () => {
-  const { expenseData } = useSelector(
+  const expenseData = useSelector(
     (store) => store.expenseTracker.expensedetails
   );
   const [cash, setCash] = useState({ income: 0, expense: 0, total: 0 });
-  const { users } = useTracker();
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(userThunk(users?.loginName));
+    dispatch(userThunk());
   }, []);
 
   useEffect(() => {

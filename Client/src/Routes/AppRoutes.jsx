@@ -7,6 +7,7 @@ import SuspenseWrapper from "../container/SuspenseWrapper";
 import PageWrapper from "../container/PageWrapper";
 import ParentUpdate from "../components/ParentUpdate";
 import ProfileImage from "../components/ProfileImage";
+import SinglePage from "../Pages/SinglePage";
 const HomePage = lazy(() => import("../Pages/Home"));
 const AddExpense = lazy(() => import("../Pages/AddExpense"));
 const ExpenceDetails = lazy(() => import("../Pages/ExpenseDetails"));
@@ -89,6 +90,14 @@ const AppRoutes = () => {
       />
       <Route path="/profile/update" element={<ParentUpdate />} />
       <Route path="/profile/upload" element={<ProfileImage />} />
+      <Route
+        path="/singleTranc/:id"
+        element={
+          <SuspenseWrapper>
+            <SinglePage />
+          </SuspenseWrapper>
+        }
+      />
     </Routes>
   );
 };

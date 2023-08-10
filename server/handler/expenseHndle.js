@@ -3,29 +3,15 @@ const dp = require("../database/dp");
 const postDpExpense = async (req, res) => {
   try {
     console.log(req.body);
-    const { id, date, expense, money, trancation, user_name, type } = req.body;
+    const { id, date, expense, money, trancation, user_id, type, addTime } =
+      req.body;
     const data = await dp.manyOrNone(
-      `INSERT INTO expense_table(id,expense,money,trancation,date,type,user_name) 
-     VALUES($1,$2,$3,$4,$5,$6,$7)`,
-      [id, expense, money, trancation, date, type, user_name]
+      `INSERT INTO expense_table(id,user_id,expense,money,trancation,date,type,addTime) 
+     VALUES($1,$2,$3,$4,$5,$6,$7,$8)`,
+      [id, user_id, expense, money, trancation, date, type, addTime]
     );
     console.log(data);
     return res.status(200).json({ status: true });
-  } catch (error) {
-    return res.status(500).json({ status: false });
-  }
-};
-
-const getExpense = async (req, res) => {
-  try {
-    const { name } = req.params;
-    const getData = await dp.manyOrNone(
-      `SELECT TO_CHAR(time, 'HH24:MI:SS') 
-      AS time_only,expense,date,id,type,money,user_name,trancation 
-      FROM expense_table WHERE user_name=$1 ORDER BY time DESC`,
-      [name]
-    );
-    return res.status(200).json({ expenseData: getData });
   } catch (error) {
     return res.status(500).json({ status: false });
   }
@@ -55,4 +41,4 @@ const deleteExpense = async (req, res) => {
   }
 };
 
-module.exports = { getExpense, postDpExpense, deleteExpense, updateExpense };
+module.exports = { postDpExpense, deleteExpense, updateExpense };

@@ -2,27 +2,36 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import uuid from "react-uuid";
 import { postExpense } from "../lib/axios/getdetails";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useTracker } from "../utils/hooks/userContext";
 import { userThunk } from "../Featuers/ExpenseTrackerApp/Expenseslice";
 import { updateExpense } from "../lib/axios/getdetails";
 
 const FormPage = () => {
+  const users = useSelector((store) => store.expenseTracker.user);
   const initial = {
     id: 1,
+    user_id: null,
     expense: "",
     money: "",
     date: "",
     trancation: "",
     type: "",
-    user_name: null,
+    addTime: null,
   };
   const { category } = useParams();
   const [amount, setAmount] = useState(initial);
-  const { users, edit, setEdit } = useTracker();
+  const { edit, setEdit } = useTracker();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const getTime = () => {
+    const hour = new Date().getHours();
+    const mintius = new Date().getMinutes();
+    const sec = new Date().getSeconds();
+    const time = `${hour}:${mintius}:${sec}`;
+    return time;
+  };
   useEffect(() => {
     if (edit) setAmount(edit);
   }, [edit]);
@@ -37,7 +46,7 @@ const FormPage = () => {
       if (!edit) {
         await postExpense(amount)
           .then((result) => {
-            dispatch(userThunk(users.loginName));
+            dispatch(userThunk());
             navigate("/addExpense");
           })
           .catch((err) => console.log(err));
@@ -46,7 +55,7 @@ const FormPage = () => {
           .then((res) => {
             setAmount(initial);
             setEdit(null);
-            dispatch(userThunk(users.loginName));
+            dispatch(userThunk());
             navigate("/addExpense");
           })
           .catch((err) => console.log(err));
@@ -62,7 +71,9 @@ const FormPage = () => {
             type="date"
             id="date"
             value={amount?.date}
-            onChange={(e) => setAmount({ ...amount, date: e.target.value })}
+            onChange={(e) =>
+              setAmount({ ...amount, addTime: getTime(), date: e.target.value })
+            }
           />
           <label htmlFor="">
             {category[0].toUpperCase() + category.slice(1)} Titile
@@ -86,7 +97,7 @@ const FormPage = () => {
                   ...amount,
                   money: e.target.value,
                   type: category,
-                  user_name: users.loginName,
+                  user_id: users.id,
                 })
               }
             />

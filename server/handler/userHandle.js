@@ -82,9 +82,14 @@ const getUser = async (req, res) => {
       [user]
     );
     const loginUser = getData[0];
-    return res
-      .status(200)
-      .json({ loginName: loginUser?.user_name, id: loginUser?.id });
+    const getexpense = await dp.manyOrNone(
+      `SELECT * FROM expense_table WHERE user_id=$1 ORDER BY time DESC`,
+      [loginUser.id]
+    );
+    return res.status(200).json({
+      loginUser,
+      userExpense: getexpense,
+    });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

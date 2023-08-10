@@ -1,4 +1,5 @@
 import { useNavigate, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   RiAccountCircleFill,
   RiShieldFlashFill,
@@ -8,7 +9,6 @@ import {
   FcCamera,
   MdDelete,
 } from "../Icons/icons";
-import { useTracker } from "../utils/hooks/userContext";
 import { useEffect, useState } from "react";
 import DeleteOption from "../components/DeleteOption";
 import { getProfile, removeProfile } from "../lib/axios/getdetails";
@@ -16,14 +16,15 @@ import { getProfile, removeProfile } from "../lib/axios/getdetails";
 const userToken = localStorage.getItem("token");
 
 const ProfilePage = () => {
+  const users = useSelector((store) => store.expenseTracker.user);
   const navigate = useNavigate();
-  const { users } = useTracker();
   const [profile, setProfile] = useState(null);
   const [options, setOptions] = useState({
     choice: false,
     message: "Are You Sure Logout From This WepSite",
+    use: "Logout",
   });
-
+  console.log(users);
   useEffect(() => {
     getProfile(users?.id)
       .then((result) => {
@@ -68,7 +69,7 @@ const ProfilePage = () => {
               )}
             </div>
             <FcCamera onClick={() => navigate("/profile/upload")} />
-            <MdDelete onClick={profileDelete} />
+            {profile && <MdDelete onClick={profileDelete} />}
             <h2 className="captlized">{users?.username}</h2>
             <p>{users?.email}</p>
           </div>

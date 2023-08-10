@@ -4,7 +4,7 @@ import FormError from "../components/FormError";
 import { editPassword } from "../lib/axios/getdetails";
 import { Link } from "react-router-dom";
 
-const ForgetPass = ({ users }) => {
+const ForgetPass = () => {
   const [response, setResponse] = useState({ msg: "" });
   const initial = { user_name: "", password: "" };
   const validate = (values) => {
