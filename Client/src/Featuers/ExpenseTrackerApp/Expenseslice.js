@@ -27,7 +27,6 @@ const expenseSlice = createSlice({
       .addCase(userThunk.fulfilled, (state, action) => {
         state.expensedetails = action.payload.userExpense;
         state.user = action.payload.loginUser;
-        console.log(state.user);
         state.isLoading = false;
         state.isError = false;
       })

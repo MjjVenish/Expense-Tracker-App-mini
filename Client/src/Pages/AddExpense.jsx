@@ -19,7 +19,7 @@ const AddExpense = () => {
   }, []);
 
   return (
-    <div className="h-full">
+    <div className=" flex-3">
       {userToken ? (
         <>
           <div className="flex mt-2">
@@ -38,7 +38,9 @@ const AddExpense = () => {
               <h5 className="font-thin">Add expense</h5>
             </button>
           </div>
-          <h1>Last Added</h1>
+          <h1 className="m-l m-t" style={{ color: "#fff" }}>
+            Last Added
+          </h1>
           {expenseData?.map((add) => (
             <Transaction datas={add} key={add.id} />
           ))}

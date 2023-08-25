@@ -1,14 +1,12 @@
 import React from "react";
 import Update from "./Update";
-import ForgetPass from "./ForgetPassword";
-import { useTracker } from "../utils/hooks/userContext";
+import { useSelector } from "react-redux";
 
 const ParentUpdate = () => {
-  const { users } = useTracker();
+  const users = useSelector((store) => store.expenseTracker.user);
   return (
     <div>
       <Update users={users} />
-      <ForgetPass users={users} />
     </div>
   );
 };

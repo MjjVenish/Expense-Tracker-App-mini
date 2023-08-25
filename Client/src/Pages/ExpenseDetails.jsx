@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { userThunk } from "../Featuers/ExpenseTrackerApp/Expenseslice";
 import { deleteExpense } from "../lib/axios/getdetails";
 import DeleteOption from "../components/DeleteOption";
+import TotalExpense from "../components/TotalExpense";
 
 const userToken = localStorage.getItem("token");
 
@@ -13,6 +14,7 @@ const ExpenceDetails = () => {
   const expenseData = useSelector(
     (store) => store.expenseTracker.expensedetails
   );
+  const [cash, setCash] = useState({ income: 0, expense: 0, total: 0 });
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { editExpense } = useTracker();
@@ -45,35 +47,46 @@ const ExpenceDetails = () => {
     setOptions({ ...options, choice: true, id });
   };
   return (
-    <div className="h-full">
+    <div className="h-fit flex-3">
       {userToken ? (
-        <>
-          <ul>
-            {expenseData?.map((tranc) => (
-              <li key={tranc.id} className="captlized">
-                <div>
-                  <h3>{tranc?.expense}</h3>
-                  <p>{tranc?.date}</p>
-                </div>
-                <div>
-                  <FcEditImage onClick={() => handleEdit(tranc)} />
-                  <FcDeleteDatabase
-                    onClick={() => {
-                      handleDelete(tranc.id);
-                    }}
-                  />
-                </div>
-                <h5 className={tranc?.type}>
-                  ₹{tranc.type === "income" ? "+" : "-"}
-                  {tranc?.money}
-                </h5>
-              </li>
-            ))}
-          </ul>
-          {options.choice && (
-            <DeleteOption options={options} handleOption={handleOption} />
-          )}
-        </>
+        options.choice ? (
+          <DeleteOption options={options} handleOption={handleOption} />
+        ) : (
+          <>
+            <TotalExpense
+              expenseData={expenseData}
+              setCash={setCash}
+              cash={cash}
+            />
+            <ul className="grid grid-col gap">
+              {expenseData?.map((tranc) => (
+                <li
+                  key={tranc.id}
+                  className={`captlized list-none flex flex-dir border text-center w-56 just ${
+                    tranc.type === "income" ? "bg-g" : "bg-r"
+                  }`}
+                >
+                  <div className="flex just">
+                    <h3>{tranc?.expense}--</h3>
+                    <h3 className={tranc?.type + `-lab`}>
+                      ₹{tranc.type === "income" ? "" : "-"}
+                      {tranc?.money}.00 Rs
+                    </h3>
+                  </div>
+                  <p>Date:{tranc?.date}</p>
+                  <div className="flex just details-but">
+                    <button onClick={() => handleEdit(tranc)}>
+                      <FcEditImage /> Edit
+                    </button>
+                    <button onClick={() => handleDelete(tranc.id)}>
+                      <FcDeleteDatabase /> Delete
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </>
+        )
       ) : (
         <Navigate to={"/login"} />
       )}

@@ -42,7 +42,7 @@ const updatePassword = async (req, res) => {
       ]);
       return res.status(201).json({ message: "Password Update SucessFully" });
     } else {
-      return res.status(401).json({ message: "User does not Exits" });
+      return res.status(401).json({ message: "Username is Invalid" });
     }
   } catch (error) {
     return res.status(500).json({ message: error.message });

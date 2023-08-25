@@ -1,11 +1,12 @@
-import React, { useRef, useState } from "react";
+import { useState } from "react";
 import server from "../lib/axios/server";
-import { useTracker } from "../utils/hooks/userContext";
+
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const ProfileImage = () => {
   const [files, setFiles] = useState(null);
-  const { users } = useTracker();
+  const users = useSelector((store) => store.expenseTracker.user);
   const navigate = useNavigate();
   const handleChange = (e) => {
     setFiles(e.target.files[0]);
@@ -16,7 +17,7 @@ const ProfileImage = () => {
     const formdata = new FormData();
     formdata.append("file", files);
     try {
-      const res = await server.put(`/upload/${users.id}`, formdata);
+      await server.put(`/upload/${users.id}`, formdata);
       navigate("/profile");
     } catch (error) {
       console.log(error);

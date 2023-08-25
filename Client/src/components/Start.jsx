@@ -5,14 +5,14 @@ const LetsStartPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="grid just-algin bg-parent h-fit">
+    <div className="grid just bg-parent h-fit">
       <div className="mt-2">
         <h1 className="captlized text-alin">Hi Welcome</h1>
       </div>
-      <div className=" bg-gray text-alin rounded p-2 ">
+      <div className=" bg-gray text-center rounded p-2 ">
         <img src={money} alt="" className="w-h-200px" />
       </div>
-      <div>
+      <div className="text-center welcome">
         <h1>Save your money with Expense Tracker</h1>
         <p>
           Save money! the more your money works for you,thr less you have to

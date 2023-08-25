@@ -1,0 +1,71 @@
+.up-form{
+    background-image: url("../assets/image/update1.jpg");
+    background-size: cover;
+}
+.up-form form{
+    background-color: #f0edea50;
+    width: 40vw;
+    height: 50vh;
+    border-radius: 16px;
+}
+.pa-up{
+    padding: 1rem;
+}
+.pa-in{
+    padding: 3rem 4rem;
+}
+.pa-la{
+    padding: 0 4rem;
+}
+.pa-bu{
+    padding-top: 2.5rem;
+}
+.up-form input{
+    padding: 12px 24px;
+}
+.pa-in input,.pa-la input{
+  border-radius: 9px;
+  border: none;
+  outline: none;
+}
+.updates {
+    background-color: #299e9c;
+    color: #FFF;
+    border-radius: 7px;
+    border: none;
+}
+input[disabled]{
+    background-color: #c9cdc8;
+}
+
+/* SINGLE PAGE CSS */
+.single-tranc{
+    background-image: url("../assets/image/fire.jpg");
+    background-size: cover;
+}
+.pad-ser input{
+    margin-top: 30px;
+    padding: 9px 18px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+}
+.sin-ser{
+    background: #299e9c;
+    border-radius: 12px;
+}
+.sig-box{
+    width: 25vw;
+    height: 40vh;
+    border: 1px solid #fff;
+    border-radius: 9px;
+}
+.sig-box h1,h2,h3{
+    padding: 10px 0;
+}
+.gre-sig{
+    background-color: #1ce20e98;
+}
+.red-sig{
+    background-color: #d71111b3;
+}

@@ -1,7 +1,9 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useState } from "react";
 import FormError from "../components/FormError";
 import { editUsers } from "../lib/axios/getdetails";
-import { useState } from "react";
+import "../style/update.css";
+import GoBack from "./GoBack";
 
 const initialValues = { user_name: "", email: "" };
 const Update = ({ users }) => {
@@ -32,21 +34,39 @@ const Update = ({ users }) => {
       validate={validate}
     >
       {(formik) => (
-        <Form>
-          <>
-            <h1>Username and Email Update</h1>
-            {response.msg && <h2>{response.msg}</h2>}
-            <Field
-              type="text"
-              name="user_name"
-              placeholder="Enter Your Username"
-            />
-            <ErrorMessage name="user_name" component={<FormError />} />
-            <Field type="email" name="email" placeholder="Enter Your email" />
-            <ErrorMessage name="email" component={<FormError />} />
-          </>
-          <input type="submit" value={"Update"} disabled={!formik.isValid} />
-        </Form>
+        <div className="grid just item-center h-fit up-form">
+          <Form className="border pa-up">
+            <>
+              <h1 className="text-center">Username and Email Update</h1>
+              {response.msg && <h2 className="text-center">{response.msg}</h2>}
+              <div className="grid pa-in">
+                <Field
+                  type="text"
+                  name="user_name"
+                  placeholder="Enter Your Username"
+                />
+                <ErrorMessage name="user_name" component={FormError} />
+              </div>
+              <div className="grid pa-la">
+                <Field
+                  type="email"
+                  name="email"
+                  placeholder="Enter Your email"
+                />
+                <ErrorMessage name="email" component={FormError} />
+              </div>
+            </>
+            <div className="text-center pa-bu">
+              <input
+                type="submit"
+                className="updates"
+                value={"Update"}
+                disabled={!formik.isValid}
+              />
+            </div>
+          </Form>
+          <GoBack color={"#f0edea"} />
+        </div>
       )}
     </Formik>
   );

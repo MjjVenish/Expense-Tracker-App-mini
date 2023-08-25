@@ -9,6 +9,7 @@ import { updateExpense } from "../lib/axios/getdetails";
 
 const FormPage = () => {
   const users = useSelector((store) => store.expenseTracker.user);
+  console.log(users);
   const initial = {
     id: 1,
     user_id: null,
@@ -38,6 +39,7 @@ const FormPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("hvdugudvduvh");
     if (
       amount.expense.length > 0 &&
       amount.date.length > 0 &&
@@ -50,6 +52,7 @@ const FormPage = () => {
             navigate("/addExpense");
           })
           .catch((err) => console.log(err));
+        console.log(amount);
       } else {
         await updateExpense(amount, edit.id)
           .then((res) => {
@@ -63,34 +66,57 @@ const FormPage = () => {
     }
   };
   return (
-    <div className="h-fit">
-      <>
-        <h1 className="captlized">{category}</h1>
+    <div className="h-fit border bg-form grid just item-center">
+      <div className="absolute" style={{ top: "30px", left: "40px" }}>
+        <button className="form-but" onClick={() => navigate("/addExpense")}>
+          Back
+        </button>
+      </div>
+      <div className="w-form bg-title just h-form border-white">
+        <h1 className="captlized text-center">{category}</h1>
         <form action="" onSubmit={handleSubmit}>
-          <input
-            type="date"
-            id="date"
-            value={amount?.date}
-            onChange={(e) =>
-              setAmount({ ...amount, addTime: getTime(), date: e.target.value })
-            }
-          />
-          <label htmlFor="">
-            {category[0].toUpperCase() + category.slice(1)} Titile
+          <div className="form-parent">
+            <label htmlFor="date" className="form-label">
+              Date*
+            </label>
+            <br />
+            <input
+              type="date"
+              id="date"
+              className="w-from-input "
+              value={amount?.date}
+              onChange={(e) =>
+                setAmount({
+                  ...amount,
+                  addTime: getTime(),
+                  date: e.target.value,
+                })
+              }
+            />
+          </div>
+          <div className="form-parent">
+            <label htmlFor="" className="form-label">
+              {category[0].toUpperCase() + category.slice(1)} Titile*
+            </label>
+            <br />
             <input
               type="text"
+              className="w-from-input "
               id="expenses"
               value={amount?.expense}
               onChange={(e) =>
                 setAmount({ ...amount, id: uuid(), expense: e.target.value })
               }
             />
-          </label>
-          <label htmlFor="money">
-            Amount
+          </div>
+          <div className="form-parent">
+            <label htmlFor="money" className="form-label">
+              Amount*
+            </label>
             <input
               type="number"
               id="money"
+              className="w-from-input "
               value={amount?.money}
               onChange={(e) =>
                 setAmount({
@@ -101,43 +127,56 @@ const FormPage = () => {
                 })
               }
             />
-          </label>
-          <label htmlFor="">
-            trancation
+          </div>
+          <div className="form-parent">
+            <label htmlFor="" className="">
+              <label htmlFor="cash" className="radio-space">
+                <input
+                  type="radio"
+                  name="tranc"
+                  id="cash"
+                  value={"Cash"}
+                  onChange={(e) =>
+                    setAmount({ ...amount, trancation: e.target.value })
+                  }
+                />
+                Cash
+              </label>
+              <label htmlFor="upi" className="radio-space">
+                <input
+                  type="radio"
+                  name="tranc"
+                  id="upi"
+                  value={"UPI"}
+                  onChange={(e) =>
+                    setAmount({ ...amount, trancation: e.target.value })
+                  }
+                />
+                UPI
+              </label>
+              <label htmlFor="other" className="radio-space">
+                <input
+                  type="radio"
+                  name="tranc"
+                  id="other"
+                  value={"Others"}
+                  onChange={(e) =>
+                    setAmount({ ...amount, trancation: e.target.value })
+                  }
+                />
+                Others
+              </label>
+            </label>
+          </div>
+          <div className="flex just con-but">
             <input
-              type="radio"
-              name="tranc"
-              id="cash"
-              value={"Cash"}
-              onChange={(e) =>
-                setAmount({ ...amount, trancation: e.target.value })
-              }
+              type="submit"
+              className={`form-but`}
+              value={edit ? "Update" : `Add ${category}`}
             />
-            <label htmlFor="cash">Cash</label>
-            <input
-              type="radio"
-              name="tranc"
-              id="upi"
-              value={"UPI"}
-              onChange={(e) =>
-                setAmount({ ...amount, trancation: e.target.value })
-              }
-            />
-            <label htmlFor="upi">UPI</label>
-            <input
-              type="radio"
-              name="tranc"
-              id="other"
-              value={"Others"}
-              onChange={(e) =>
-                setAmount({ ...amount, trancation: e.target.value })
-              }
-            />
-            <label htmlFor="other">Others</label>
-          </label>
-          <input type="submit" value={edit ? "Update" : `Add ${category}`} />
+          </div>
         </form>
-      </>
+      </div>
     </div>
   );
 };

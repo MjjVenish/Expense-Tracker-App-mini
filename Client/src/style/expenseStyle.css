@@ -4,6 +4,12 @@
 .flex-1{
     flex: 1 1 0;
 }
+.flex-3{
+    flex: 5 1 0;
+}
+.flex-dir{
+    flex-direction: column;
+}
 .h-9{
     height: 46px;
 }
@@ -13,14 +19,83 @@
 .captlized{
     text-transform: capitalize;
 }
+.just {
+    justify-content: center;
+}
+.item-center {
+    align-items: center;
+}
+.margin-tranc{
+    padding:0 2.5rem;
+    margin-top: 1rem;
+    border-radius: 1.3rem;
+}
+.just-end{
+    justify-content: end;
+}
+.align-end{
+    align-items: end;
+}
+.gap-ex{
+    padding: 0px 12px;
+}
 .error{
     color: red;
 }
+.mar-to{
+    margin: 0px 8rem;
+}
+.m-ei{
+    margin-top: 1rem;
+}
+.m-t{
+    padding-top: 2rem;
+}
+.m-i{
+    margin-left: 1rem;
+}
 .income{
-    color:#17c820 ;
+    color:#000 ;
+    background-color:#89f18e ;
 }
 .expense{
-    color: #ff0000;
+    background-color: #e81010;
+    color: #000;
+}
+.mar-total{
+    padding: 2rem;
+}
+.wh-filter{
+    height: 30vh;
+    width: 50vw;
+    margin-top: 20px;
+    text-align: center;
+    border-radius: 20px;
+    background-color: #d4d7da77;
+}
+.text-end{
+    text-align: end;
+}
+.z-10{
+    z-index: 1;
+}
+.search-input{
+    width: 80%;
+    padding: 8px 44px;
+    outline: none;
+    border-radius: 10px;
+}
+.search-icon{
+    top: 9px;
+    left: 90px;
+}
+.fill-but{
+    padding: 9px 18px;
+    margin-right: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #000;
+    color: #ffff;
 }
 .bg-red{
   background-color: #ff0000;
@@ -30,6 +105,18 @@
 }
 .bg-white{
     background-color: #fff;
+}
+.m-l{
+    padding-left: 2.5rem;
+}
+.bg-slate{
+    background-color: #a6bdb7;
+}
+.box-total{
+    width: 300px;
+    height: 120px;
+    border-radius: 2rem;
+    text-align: center;
 }
 .mx-9{
   margin-left: 100px;
@@ -47,7 +134,17 @@
     height: 200px;
 }
 .font-thin{
-    font-size: 40px;
+    font-size: 1.5rem;
+}
+.padding-nav{
+    padding:24px 12px ;
+}
+.pad-navlink{
+    padding: 12px 6px;
+}
+.navlink{
+text-decoration: none;
+    color: #000;
 }
 .font-big{
 font-size: 160px;
@@ -78,12 +175,41 @@ text-align: center;
 .grid{
     display: grid;
 }
-.just-algin{
-    justify-content: center;
+.grid-col{
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.gap{
+  gap: 1rem;
+}
+.w-56{
+    height: 20vh;
+    border-radius: 1rem;   
+    color: #fff;
+}
+.details-but button{
+    background-color:#0d0e0e ;
+    margin-right: 1rem;
+    padding: 9px 18px;
+    color: #fff;
+    border-radius: 9px;
+    border: none;
+}
+.bg-g{
+    background-color: #17c820;
+}
+.bg-r{
+    background-color: #e81010;
+}
+.bg-dhuttu{
+    background-image: url("../assets/image/fire1.jpg");
+    background-size: cover;
 }
 .w-h-200px{
     width: 350px;
     height: 400px;
+}
+.bg-adds{
+    background-image: url("../assets/image/unnamed.webp");
 }
 .w-h{
     width: 450px;
@@ -92,14 +218,32 @@ text-align: center;
 .w-80{
     width: 80%;
 }
-.just{
-    justify-content: center;
+.grid-only{
+    display: grid;
 }
-.item-center{
-    align-items: center;
+.w-from-input{
+    width: 100%;
+    padding: 12px 24px;
+    border-radius: 2rem;
+    outline: none;
+    border: none;
+    background-color: #1d1b1b;
+    color: white
+}
+.text-white{
+    color: #fff;
+}
+.border-white{
+    border: 1px solid #fff;
+}
+.form-parent{
+    padding: 1rem 4rem;
 }
 .text-alin{
-  text-align: center
+  text-align: center;
+}
+.welcome h1,p{
+ padding: 6px 0px;
 }
 .rounded{
     border-radius: 50%;
@@ -135,23 +279,34 @@ padding: 15px;
 .py{
 padding: 15px;
 }
+.effect{
+    color: #fff;
+}
 .px {
     padding-left: 40px;
     padding-right: 40px;
 }
+.bg-form{
+    background-color: #000;
+    color: #fff;
+}
 .rounded-2{
     border-radius: 10px;
 }
+.list-none{
+    list-style: none;
+}
 .active{
-   background-color:#edf5e1;
-   border-radius: 18px;
+   color: #217bcf;
+}
+.w-100{
+    width: 100%;
 }
 .h-100{
     height: 100%;
 }
 .bg-nav{
-    color: #05386b;
-    background-color: #379683;
+   background-color: #eaf0e3
 }
 .px-nav{
     padding-left: 80px;
@@ -205,15 +360,132 @@ padding: 15px;
 }
 .profile-img{
     width: 10rem;
-    height: 10rem;
-    border-radius: 50%;
+    height: 12rem;
+    width: 80%;
+    border-radius: 30px;
+}
+.first-l{
+    height: 40px;
+}
+.just-arrond{
+    justify-content: space-around;
+}
+.info div{
+    padding: 1rem 0px;
+}
+.info h4{
+    padding: 0px 12px;
+    cursor: pointer;
+}
+.info button {
+    margin:  0px 12px;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    cursor: pointer;
 }
 .hover_effect{
     cursor: pointer;
 }
-.hover-income:hover {
-   background-color: #07f42a;
+.h-form{
+    height: 70vh;
 }
-.hover-expense:hover {
-    background-color: #c93615;
+.pad-profile{
+    padding: 12px 9px;
+}
+.w-form{
+    width: 30vw;
+}
+.text-center{
+    text-align: center
+}
+.income-rs{
+    color: #07f42a;
+}
+.expense-rs {
+    color: #cb330d;
+}
+.border-white{
+    border: 1px solid white;
+}
+.bg-title{
+    background-color: #110e0e;
+    border-radius: 3rem;
+}
+.form-label{
+  padding-left: 16px;
+padding-bottom: 12px;
+}
+.radio-space{
+    margin-right: 16px;
+}
+.form-but{
+    padding: 12px 18px;
+    border-radius: 18px;
+    background-color: #333030;
+    color: #fff;
+    border: none;
+}
+.con-but{
+    padding-top: 50px;
+}
+input[type="date"]::-webkit-calendar-picker-indicator{
+  background-color: #fff;
+}
+.reg-form{
+    width: 35vw;
+    height: 70vh;
+}
+.back-set{
+    background-image: url("../assets/image/reg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+}
+.reg-input input{
+    width: 80%;
+    padding: 9px 18px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+}
+.reg-input input[type="submit"] {
+    border: none;
+    background-color: #05386b;
+    color: #fff;
+    width: 40%;
+    border-radius: 7px;
+    margin-top: 3rem;
+}
+.reg-input input[disabled]{
+    background-color:#6d716d;
+    color: #000;
+}
+.reg-input label{ 
+  padding-left: 3.7rem;
+}
+.reg-input div{ 
+    margin-bottom: 10px;
+}
+.arrow-nav{
+    margin-top: 12px;
+}
+.cursor{
+    cursor: pointer;
+}
+.drop{
+    padding-left: 2rem;
+}
+.bg-b {
+    color: #f0edea;
+}
+.reg-input span{
+    position: absolute;
+}
+.nav-pro{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.margin-tranc:hover{
+    background-color: #bfc2bd60;
 }

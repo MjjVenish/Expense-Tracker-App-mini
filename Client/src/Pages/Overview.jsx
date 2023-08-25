@@ -2,11 +2,9 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Transaction from "../components/Transactions";
 import { Navigate } from "react-router-dom";
-import {
-  BsFileEarmarkArrowDownFill,
-  BsFileEarmarkArrowUpFill,
-} from "../Icons/icons";
 import { overViewData, searchItem } from "../lib/axios/getdetails";
+import Expenses from "../components/Expenses";
+import { FcSearch } from "../Icons/icons";
 
 const userToken = localStorage.getItem("token");
 
@@ -62,51 +60,67 @@ const Overview = () => {
   }, [isData]);
 
   return (
-    <div className="h-full">
+    <div className=" flex-3 flex just">
       {userToken ? (
-        <>
-          <div>
-            <h3>Total Income</h3>
-            <div>
-              <BsFileEarmarkArrowDownFill />
-              <h2>₹{balance.income}</h2>
+        <div className="mar-total">
+          <Expenses income={balance.income} expense={balance.expense} />
+          <div className="flex border flex-dir just wh-filter">
+            <div className="relative">
+              <FcSearch className="absolute search-icon" />
+              <input
+                type="search"
+                className="search-input"
+                value={search.data}
+                onChange={handleSearch}
+                placeholder="Search your Expenses........."
+              />
             </div>
-          </div>
-          <div>
-            <h3>Total Expense</h3>
             <div>
-              <BsFileEarmarkArrowUpFill />
-              <h2>₹{balance.expense}</h2>
+              <h1 style={{ color: "#fff" }}>Filter Options</h1>
             </div>
-          </div>
-          <div>
-            <button onClick={() => filterButton("type", "income")}>
-              Income
-            </button>
-            <button onClick={() => filterButton("type", "expense")}>
-              Expense
-            </button>
-            <button onClick={() => filterButton("trancation", "UPI")}>
-              UPI
-            </button>
-            <button onClick={() => filterButton("trancation", "Cash")}>
-              Cash
-            </button>
-            <button onClick={() => filterButton("trancation", "Others")}>
-              Others
-            </button>
-            <input type="date" value={search.data} onChange={handleChange} />
-            <input
-              type="search"
-              value={search.data}
-              onChange={handleSearch}
-              placeholder="search....."
-            />
+            <div className="">
+              <button
+                className="fill-but"
+                onClick={() => filterButton("type", "income")}
+              >
+                Income
+              </button>
+              <button
+                className="fill-but"
+                onClick={() => filterButton("type", "expense")}
+              >
+                Expense
+              </button>
+              <button
+                className="fill-but"
+                onClick={() => filterButton("trancation", "UPI")}
+              >
+                UPI
+              </button>
+              <button
+                className="fill-but"
+                onClick={() => filterButton("trancation", "Cash")}
+              >
+                Cash
+              </button>
+              <button
+                className="fill-but"
+                onClick={() => filterButton("trancation", "Others")}
+              >
+                Others
+              </button>
+              <input
+                className="fill-but"
+                type="date"
+                value={search.data}
+                onChange={handleChange}
+              />
+            </div>
           </div>
           {isData?.map((type, index) => (
             <Transaction datas={type} key={index} />
           ))}
-        </>
+        </div>
       ) : (
         <Navigate to={"/login"} />
       )}

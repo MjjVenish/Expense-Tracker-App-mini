@@ -78,7 +78,7 @@ const getUser = async (req, res) => {
   try {
     const { user } = req.user;
     const getData = await dp.manyOrNone(
-      `SELECT user_name,id FROM users_table WHERE email=$1`,
+      `SELECT user_name,id,email,image FROM users_table WHERE email=$1`,
       [user]
     );
     const loginUser = getData[0];

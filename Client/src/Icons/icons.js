@@ -4,6 +4,9 @@ export {
   FaFileInvoiceDollar,
   FaUser,
   FaArrowAltCircleLeft,
+  FaUserEdit,
+  FaCashRegister,
+  FaBell,
 } from "react-icons/fa";
 export {
   FcAddImage,
@@ -14,6 +17,7 @@ export {
   FcDeleteDatabase,
   FcLock,
   FcCamera,
+  FcSearch,
 } from "react-icons/fc";
 export {
   BsFileEarmarkArrowUpFill,
@@ -26,4 +30,9 @@ export {
   RiLogoutBoxRLine,
   RiLoginBoxFill,
 } from "react-icons/ri";
-export { MdEmail, MdDelete } from "react-icons/md";
+export {
+  MdEmail,
+  MdDelete,
+  MdOutlineArrowDropDown,
+  MdArrowDropUp,
+} from "react-icons/md";

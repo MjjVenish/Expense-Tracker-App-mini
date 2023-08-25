@@ -8,6 +8,8 @@ import PageWrapper from "../container/PageWrapper";
 import ParentUpdate from "../components/ParentUpdate";
 import ProfileImage from "../components/ProfileImage";
 import SinglePage from "../Pages/SinglePage";
+import Error from "../Pages/Error";
+import ForgetPass from "../components/ForgetPassword";
 const HomePage = lazy(() => import("../Pages/Home"));
 const AddExpense = lazy(() => import("../Pages/AddExpense"));
 const ExpenceDetails = lazy(() => import("../Pages/ExpenseDetails"));
@@ -98,6 +100,8 @@ const AppRoutes = () => {
           </SuspenseWrapper>
         }
       />
+      <Route path="*" element={<Error />} />
+      <Route path="/passwordUpdate" element={<ForgetPass />} />
     </Routes>
   );
 };

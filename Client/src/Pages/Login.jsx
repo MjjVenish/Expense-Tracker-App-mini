@@ -2,17 +2,10 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import {
-  FaUsers,
-  MdEmail,
-  FaUser,
-  FcLock,
-  FaArrowAltCircleLeft,
-} from "../Icons/icons";
+import { FaUsers, MdEmail, FaUser, FcLock } from "../Icons/icons";
 import FormError from "../components/FormError";
 import { postUsers } from "../lib/axios/getdetails";
-import { userThunk } from "../Featuers/ExpenseTrackerApp/Expenseslice";
-import { useTracker } from "../utils/hooks/userContext";
+import GoBack from "../components/GoBack";
 
 const intialValues = {
   user_name: "",
@@ -65,10 +58,10 @@ const LoginPage = () => {
     >
       {(formik) => {
         return (
-          <div className="grid item-center just h-fit">
-            {response.msg && <h3>{response.msg}</h3>}
+          <div className="grid item-center just h-fit fire">
             <Form className=" w-h text-alin">
               <FaUsers className="font-big" />
+              {response.msg && <h3>{response.msg}</h3>}
               <div className="relative">
                 <Field
                   className={`w-80 p-3 rounded-input pl-input m-input `}
@@ -104,7 +97,7 @@ const LoginPage = () => {
                   <input type="checkbox" id="reminder" />
                   Remember Me
                 </label>
-                <Link to={"/profile/update"} className="text-de">
+                <Link to={"/passwordUpdate"} className="text-de">
                   Forget Password?
                 </Link>
               </div>
@@ -115,13 +108,10 @@ const LoginPage = () => {
                 disabled={!formik.isValid}
               />
               <div>
-                <Link to={"/register"}>Account Create</Link>
+                Create an Account <Link to={"/register"}>Sgin Up</Link>
               </div>
             </Form>
-            <FaArrowAltCircleLeft
-              className="absolute font-icon"
-              onClick={() => navigate("/addExpense")}
-            />
+            <GoBack />
           </div>
         );
       }}
