@@ -306,7 +306,8 @@ padding: 15px;
     height: 100%;
 }
 .bg-nav{
-   background-color: #eaf0e3
+   background-color: #eaf0e3;
+   min-height: 100vh;
 }
 .px-nav{
     padding-left: 80px;
